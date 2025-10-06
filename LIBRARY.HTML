@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const books = {
+  "Book A": 0,
+  "Book B": 0,
+  "Book C": 0,
+};
+
+let borrowCount = 0;
+const maxBorrow = 10;
+
+while (borrowCount < maxBorrow) {
+  // Show list of books
+  const bookNames = Object.keys(books).join(", ");
+  const bookChoice = prompt(`Which book would you like to borrow? Choose from: ${bookNames}
+(Type the exact name of the book, or type 'stop' to end early)`);
+
+  if (bookChoice === null || bookChoice.toLowerCase() === "stop") {
+    break; // Stop early
+  }
+
+  if (books.hasOwnProperty(bookChoice)) {
+    books[bookChoice]++;
+    borrowCount++;
+    alert(`You borrowed "${bookChoice}". Total borrows so far: ${borrowCount}`);
+  } else {
+    alert("Invalid book choice. Please try again.");
+  }
+}
+
+// Reporting borrow counts
+let report = "Borrow Report:\n";
+for (const [book, count] of Object.entries(books)) {
+  report += `"${book}" was borrowed ${count} times.\n`;
+}
+alert(report);
+    </script>
+</body>
+</html>
